@@ -1,4 +1,5 @@
 resource "local_file" "ansible-inventory-file" {
+  
   content = templatefile("publicservers.tpl",
     {
 
