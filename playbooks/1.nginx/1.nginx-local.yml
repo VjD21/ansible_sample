@@ -19,7 +19,7 @@
 
     - name: Perform apt update & Install basic packages
       shell: apt update && apt install -y unzip jq net-tools stress
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
       timeout: 30
       tags:
         - tools
@@ -29,14 +29,14 @@
         name: nginx
         state: latest
         update_cache: yes
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
       timeout: 30
 
     - name: Start Nginx Service
       service:
         name: nginx
         state: started
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
   tags:
     - nginx
 
@@ -52,7 +52,7 @@
         owner: root
         group: root
         mode: "0644"
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
 
     - name: Copy scorekeeper.js file
       copy:
@@ -61,7 +61,7 @@
         owner: root
         group: root
         mode: "0644"
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
 
     - name: Copy style.css file
       copy:
@@ -70,6 +70,6 @@
         owner: root
         group: root
         mode: "0644"
-      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "24.04")
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
   tags:
     - files
