@@ -12,4 +12,4 @@
     - name: perform apt update
       shell: apt-get update
     - name: install tools
-      shell: apt-get install -y unzip jq stress net-tools
+      shell: apt-get install -y unzip jq stress net-tools nginx
