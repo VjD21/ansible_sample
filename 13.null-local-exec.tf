@@ -1,7 +1,7 @@
 resource "null_resource" "webservers" {
   provisioner "local-exec" {
     command = <<EOH
-      sleep 30
+      sleep 60
       ansible -i invfile pvt -m ping
     EOH
   }
