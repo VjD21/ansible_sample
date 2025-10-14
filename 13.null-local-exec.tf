@@ -5,9 +5,8 @@ resource "null_resource" "webservers" {
       ansible -i invfile pvt -m ping
     EOH
   }
-
-  depends_on = [
-    local_file.ansible_inventory_file
-  ]
+  depends_on = [local_file.ansible-inventory-file]
 }
+
+
 
