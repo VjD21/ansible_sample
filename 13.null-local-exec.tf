@@ -1,37 +1,18 @@
-# resource "null_resource" "webservers" {
-#   provisioner "local-exec" {
-#     command = <<EOH
-#       for i in {1..12}; do
-#         echo "Checking SSH connectivity..."
-#         ansible -i invfile pvt -m ping && break
-#         echo "Retrying in 10s..."
-#         sleep 10
-#       done
-#     EOH
-#   }
-
-#   depends_on = [
-#     local_file.ansible-inventory-file
-#   ]
-# }
-
-
-
+resource "time_sleep" "wait_30s" {
+  create_duration = "30s"
+}
 
 resource "null_resource" "webservers" {
-  provisioner "local-exec" {
-    command = <<EOH
-#!/bin/bash
-for i in {1..12}; do
-  echo "Checking SSH connectivity..."
-  ansible -i invfile pvt -m ping && break
-  echo "Retrying in 10s..."
-  sleep 10
-done
-EOH
-  }
-
   depends_on = [
-    local_file.ansible-inventory-file
+    local_file.ansible-inventory-file,
+    time_sleep.wait_30s
   ]
+
+  provisioner "local-exec" {
+    command = "ansible -i invfile pvt -m ping"
+  }
 }
+
+
+
+
