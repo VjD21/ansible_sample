@@ -12,7 +12,7 @@
         - update
 
     - name: Clone Git Repo
-      shell: cd /tmp && git clone https://github.com/saikiranpi/ansible_testing.git ansible_testing_page
+      shell: cd /tmp && git clone https://github.com/VjD21/CloudPlayground.git ansible_testing_page
       tags:
         - clone
 
@@ -33,29 +33,29 @@
         mode=0644
       ignore_errors: yes #Will Proceed to next task even it failed.
       tags:
-        - index
+        - index_html
 
     - name: Copy the style files to  destination folder.
       copy: >
-        src=/tmp/ansible_testing_page/style.css
-        dest=/var/www/html/style.css
+        src=/tmp/ansible_testing_page/circle.html
+        dest=/var/www/html/circle.html
         remote_src=yes
         owner=root
         group=root
         mode=0644
       tags:
-        - style
+        - circle_html
 
     - name: Copy the javascript files to  destination folder.
       copy: >
-        src=/tmp/ansible_testing_page/scorekeeper.js
-        dest=/var/www/html/scorekeeper.js
+        src=/tmp/ansible_testing_page/move.html
+        dest=/var/www/html/move.html
         remote_src=yes
         owner=root
         group=root
         mode=0644
       tags:
-        - js
+        - move_html
 
     - name: restart nginx
       command: service nginx restart
