@@ -7,7 +7,7 @@
     - name: Run SHELL Module
       shell: >
         echo "Welcome
-        To DevSecOps By Saikiran Pinapathruni ${HOME}"
+        To DevSecOps By VijayDurai ${HOME}"
       tags:
         - shell
 
@@ -18,7 +18,7 @@
 
     - name: Run COMMAND Module
       command: >
-        echo "To DevSecOps By Saikiran Pinapathruni ${HOME}"
+        echo "To DevSecOps By VijayDurai ${HOME}"
       tags:
         - command
     - name: Run  Env Using COMMAND Variables
@@ -28,7 +28,7 @@
 
     - name: Run RAW Module #Very simple, If you do not have Python
       raw: >
-        echo "To DevSecOps By Saikiran Pinapathruni ${HOME}"
+        echo "To DevSecOps By VijayDurai ${HOME}"
       tags:
         - raw
 
