@@ -12,7 +12,7 @@
         - shell
 
     - name: Run  Env Using SHELL Variables
-      shell: env && df -h && free
+      shell: df -h && free
       tags:
         - shell
 
@@ -22,7 +22,7 @@
       tags:
         - command
     - name: Run  Env Using COMMAND Variables
-      command: env && df -h && free
+      command: df -h && free
       tags:
         - command
 
@@ -33,7 +33,7 @@
         - raw
 
     - name: Run  Env Using RAW Variables
-      raw: env && df -h && free
+      raw: df -h && free
       tags:
         - raw
 # Interview difference between shell command and raw
