@@ -48,6 +48,9 @@
         owner: root
         group: root
         mode: "0600"
+
+    - name: Create pwd
+      shell: pwd
         
     - name: Check S3 Buckets
       shell: aws s3 ls | cut -d " " -f 3
