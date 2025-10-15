@@ -60,9 +60,9 @@
         password: "{{ '%s' | format(user_password) | regex_replace('\n', '') | password_hash('sha512') }}"
         password_expire_min: 1
       with_items:
-        - Avinash
-        - Saikiran
-        - Gnane
+        - VijayDurai
+        - Deepth
+        - Ramganesh
     - name: Replace Password Authentication To Yes
       ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
@@ -74,5 +74,3 @@
   handlers:
     - name: Restart SSH Service
       shell: service sshd restart
-    - name: Restart elastic-agent
-      shell: sudo heartbeat setup && sudo service heartbeat-elastic start
