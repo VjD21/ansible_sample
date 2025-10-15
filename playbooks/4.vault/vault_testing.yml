@@ -28,7 +28,8 @@
       pip:
         name: passlib
         executable: pip3
-        
+        state: present
+
     - name: Copy Encrypted File To /tmp
       copy:
         src: /tmp/{{item}} #This Encrypted File Must Be Created Prior To Running The Playbook.
