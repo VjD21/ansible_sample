@@ -18,12 +18,17 @@
     - name: Create .aws folder
       shell: mkdir -p /root/.aws
       ignore_errors: yes
-    - name: Install packages
-      apt:
-        name: unzip,passlib
-        state: latest
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
-      
+
+    - name: Install Python pip
+      package:
+        name: python3-pip
+        state: present
+
+    - name: Install passlib module
+      pip:
+        name: passlib
+        executable: pip3
+        
     - name: Copy Encrypted File To /tmp
       copy:
         src: /tmp/{{item}} #This Encrypted File Must Be Created Prior To Running The Playbook.
