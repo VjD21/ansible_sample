@@ -24,7 +24,7 @@
         name: unzip,jq
         state: latest
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
-      
+
     - name: Install pip using raw
       raw: apt-get update && apt-get install -y python3-pip
 
@@ -39,7 +39,7 @@
         group: root
         mode: "0600"
       with_items:
-        - aws_creds
+        - aws_creds     # You can add more files here.
     - name: Copy Encrypted Credentials File To .aws folder
       copy:
         src: /tmp/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
