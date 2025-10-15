@@ -18,12 +18,13 @@
     - name: Create .aws folder
       shell: mkdir -p /root/.aws
       ignore_errors: yes
+      
     - name: Install packages
       apt:
         name: unzip,jq
         state: latest
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
-
+      
     - name: Install pip using raw
       raw: apt-get update && apt-get install -y python3-pip
 
