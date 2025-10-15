@@ -28,8 +28,6 @@
         mode: "0600"
       with_items:
         - aws_creds
-        - tls.key
-        - tls.crt
     - name: Copy Encrypted Credentials File To .aws folder
       copy:
         src: /tmp/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
