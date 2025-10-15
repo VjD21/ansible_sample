@@ -39,7 +39,8 @@
         group: root
         mode: "0600"
       with_items:
-        - aws_creds     # You can add more files here.
+        - aws_creds        #You can add multiple files here.
+
     - name: Copy Encrypted Credentials File To .aws folder
       copy:
         src: /tmp/aws_creds #This Encrypted File Must Be Created Prior To Running The Playbook.
@@ -47,6 +48,7 @@
         owner: root
         group: root
         mode: "0600"
+        
     - name: Check S3 Buckets
       shell: aws s3 ls | cut -d " " -f 3
       register: buckets
@@ -59,3 +61,24 @@
     - name: Print VPC ID
       debug:
         var: vpcs
+    - name: Create admin users
+      user:
+        name: "{{ item }}"
+        password: "{{ '%s' | format(user_password) | regex_replace('\n', '') | password_hash('sha512') }}"
+        shell: /bin/bash
+        groups: sudo,root
+      loop:
+        - VijayDurai
+        - Deepth
+        - Ramganesh
+    - name: Replace Password Authentication To Yes
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication no"
+        line: PasswordAuthentication yes
+        backup: yes
+      notify:
+        - Restart SSH Service
+  handlers:
+    - name: Restart SSH Service
+      shell: service sshd restart
