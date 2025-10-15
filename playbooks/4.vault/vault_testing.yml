@@ -6,14 +6,14 @@
   become: yes
   become_user: root
   serial: 3
-  vars:
-    user_password: !vault |
-      $ANSIBLE_VAULT;1.1;AES256
-      66373230616439663565636163393464333436343335313364316465643631613161636464373164
-      6264623738626230646466396634643835376638663633650a396663366130386331633064623532
-      66303563333362646162383134383035303062393136653431646137616664333362643238633639
-      3364616465383261380a316435636437313365653034353132656165343566623362373932393536
-      36393166643934383165613238653964313862666236393162643739613936316438
+  # vars:
+  #   user_password: !vault |
+  #     $ANSIBLE_VAULT;1.1;AES256
+  #     66373230616439663565636163393464333436343335313364316465643631613161636464373164
+  #     6264623738626230646466396634643835376638663633650a396663366130386331633064623532
+  #     66303563333362646162383134383035303062393136653431646137616664333362643238633639
+  #     3364616465383261380a316435636437313365653034353132656165343566623362373932393536
+  #     36393166643934383165613238653964313862666236393162643739613936316438
   tasks:
     - name: Create .aws folder
       shell: mkdir -p /root/.aws
@@ -61,3 +61,24 @@
     - name: Print VPC ID
       debug:
         var: vpcs
+  #   - name: Create admin users
+  #     user:
+  #       name: "{{ item }}"
+  #       password: "{{ '%s' | format(user_password) | regex_replace('\n', '') | password_hash('sha512') }}"
+  #       shell: /bin/bash
+  #       groups: sudo,root
+  #     loop:
+  #       - VijayDurai
+  #       - Deepth
+  #       - Ramganesh
+  #   - name: Replace Password Authentication To Yes
+  #     ansible.builtin.lineinfile:
+  #       path: /etc/ssh/sshd_config
+  #       regexp: "^PasswordAuthentication no"
+  #       line: PasswordAuthentication yes
+  #       backup: yes
+  #     notify:
+  #       - Restart SSH Service
+  # handlers:
+  #   - name: Restart SSH Service
+  #     shell: service sshd restart
