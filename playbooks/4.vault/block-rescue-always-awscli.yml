@@ -17,7 +17,7 @@
           shell: jq --help
         - name: Check if AWS Exists
           shell: aws --version
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '24.04'
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
 
       # Rescue tasks execute if any of the block task fails in above section.
       rescue:
