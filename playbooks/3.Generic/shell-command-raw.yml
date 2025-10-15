@@ -5,9 +5,7 @@
   become_user: root
   tasks:
     - name: Run SHELL Module
-      shell: >
-        echo "Welcome
-        To DevSecOps By VijayDurai ${HOME}"
+      shell: echo "Welcome To DevSecOps By VijayDurai ${HOME}"
       tags:
         - shell
 
