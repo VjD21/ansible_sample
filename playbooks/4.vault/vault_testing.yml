@@ -2,6 +2,8 @@
 ---
 - name: Run AWS Cli Commands On All Servers
   hosts: pvt
+  vars_files:
+    - vault_vars.yml
   gather_facts: yes
   become: yes
   become_user: root
