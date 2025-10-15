@@ -15,12 +15,12 @@
         - shell
 
     - name: Run COMMAND Module
-      command: >
+      shell: >
         echo "To DevSecOps By VijayDurai ${HOME}"
       tags:
         - command
     - name: Run  Env Using COMMAND Variables
-      command: df -h && free
+      shell: df -h && free
       tags:
         - command
 
