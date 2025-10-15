@@ -10,7 +10,7 @@
       loop:
         - build-essential
         - tcl
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '24.04'
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
 
     - name: Check Redis Status
       shell: systemctl status redis --no-pager
