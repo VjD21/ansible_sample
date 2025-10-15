@@ -18,7 +18,7 @@
     - name: Create .aws folder
       shell: mkdir -p /root/.aws
       ignore_errors: yes
-      
+
     - name: Install packages
       apt:
         name: unzip,jq
@@ -63,13 +63,12 @@
       user:
         name: "{{item}}"
         state: present
-        comment: Admin User "{{item}}"
-        groups: root
+        comment: "Admin User {{item}}"
+        groups: sudo,root
         shell: /bin/bash
-        group: sudo
-        password: "{{ '%s' | format(user_password) | regex_replace('\n', '') | password_hash('sha512') }}"
+        password: "{{ user_password_hashed }}"
         password_expire_min: 1
-      with_items:
+      loop:
         - VijayDurai
         - Deepth
         - Ramganesh
