@@ -9,7 +9,7 @@
     custom_heading: "Welcome To DevSecOps By Saikiran Pinapathruni"
     custom_para: "We Are Studying Ansible Templates Practically..!!!"
     aws_account: "211125710812"
-    friends: ["sai", "avinash", "gnane"]
+    friends: ["ram", "deepth", "dinesh"]
     #Dynamic variables from Ansible Facts
     todays_date: "{{ ansible_facts['date_time']['date'] }}"
     host_name: "{{ ansible_facts['hostname'] }}"

@@ -1,3 +1,4 @@
+#1
 ---
 - name: Play For Installing Nginx On WebServers
   hosts: pvt
@@ -40,6 +41,8 @@
   tags:
     - nginx
 
+#2
+
 - name: Play For Copying File
   hosts: testserver01:testserver02:testserver03
   become: yes
@@ -73,3 +76,5 @@
       when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "22.04")
   tags:
     - files
+
+

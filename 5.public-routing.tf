@@ -7,7 +7,7 @@ resource "aws_route_table" "terraform-public" {
   # }
 
   tags = {
-    Name              = "${var.vpc_name}-MAIN-RT"
+    Name              = "${var.vpc_name}-main-route-table"
     Terraform-Managed = "Yes"
     Env               = local.new_environment
     ProjectID         = local.projid

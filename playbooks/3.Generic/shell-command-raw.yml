@@ -19,6 +19,7 @@
         echo "To DevSecOps By VijayDurai ${HOME}"
       tags:
         - command
+        
     - name: Run  Env Using COMMAND Variables
       shell: df -h && free
       tags:
@@ -34,6 +35,7 @@
       raw: df -h && free
       tags:
         - raw
+
 # Interview difference between shell command and raw
 # ***command : ansible-playbook -i invfile playbooks/3.generic/shell-command-raw.yml --tags raw ***
 

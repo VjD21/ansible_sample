@@ -15,11 +15,11 @@ resource "aws_instance" "webservers" {
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true
   tags = {
-    Name              = "${var.vpc_name}-PublicServer-${count.index + 1}"
+    Name              = "${var.vpc_name}-public-server-${count.index + 1}"
     Terraform-Managed = "Yes"
     Env               = local.new_environment
     ProjectID         = local.projid
-    ManagedBy         = "Terraform"
+    ManagedBy         = "terraform"
   }
 }
 
